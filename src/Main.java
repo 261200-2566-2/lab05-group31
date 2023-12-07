@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-// Interface for RPG characters
+    //  [1] Interface for RPG characters
 interface RPGCharacter {
-    void attack();
+    void attacked();
     void run();
+
     void useBuff();
     void calculateDistance();
 
@@ -11,165 +12,20 @@ interface RPGCharacter {
     String getName();
     int getPosition();
 
-
 }
 
-// Interface for accessories
+    //  [2]  Interface for accessories
 interface Accessory {
     void applyEffect(RPGCharacter character);
 }
 
-// Implementing character classes
-class Police implements RPGCharacter {
-    String name;
-    int HP;
-    int speed;
-    int attack;
-    int position;
-
-    public int getHP(){
-        return HP;
-    }
-    public int getPosition(){
-        return position;
-    }
-    public String getName(){
-        return name;
-    }
-
-    public Police(String name, int HP, int speed, int attack, int position) {
-        this.name = name;
-        this.HP = HP;
-        this.speed = speed;
-        this.attack = attack;
-        this.position = position;
-    }
-
-    @Override
-    public void attack() {
-        // Implement attack logic for police
-        System.out.println(name + " attacks!");
-    }
-
-    @Override
-    public void run() {
-        // Implement run logic for police
-        System.out.println(name + " is running.");
-    }
-
-    @Override
-    public void useBuff() {
-        // Implement useBuff logic for police
-        System.out.println(name + " uses a buff.");
-    }
-
-    @Override
-    public void calculateDistance() {
-        // Implement calculateDistance logic for police
-        System.out.println(name + " calculates distance.");
-    }
-}
-
-class Thief implements RPGCharacter {
-    String name;
-    int HP;
-    int speed;
-    int attack;
-    int position;
-    public int getHP(){
-        return HP;
-    }
-    public int getPosition(){
-        return position;
-    }
-    public String getName(){
-        return name;
-    }
-    public Thief(String name, int HP, int speed, int attack, int position) {
-        this.name = name;
-        this.HP = HP;
-        this.speed = speed;
-        this.attack = attack;
-        this.position = position;
-    }
-
-    @Override
-    public void attack() {
-        // Implement attack logic for thief
-        HP -= 20;
-        System.out.println(name + " attacks!");
-    }
-
-    @Override
-    public void run() {
-        position -= 10;
-        // Implement run logic for thief
-        System.out.println(name + " is running.");
-    }
-
-    @Override
-    public void useBuff() {
-        // Implement useBuff logic for thief
-        System.out.println(name + " uses a buff.");
-    }
-
-    @Override
-    public void calculateDistance() {
-        // Implement calculateDistance logic for thief
-        System.out.println(name + " calculates distance.");
-    }
-}
-
-// Implementing accessory classes
-class Weapon implements Accessory {
-    private String name;
-
-    public Weapon(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void applyEffect(RPGCharacter character) {
-        // Implement applyEffect logic for weapon
-        System.out.println("Applying " + name + " to " + character.getClass().getSimpleName());
-    }
-}
-
-class Vehicle implements Accessory {
-    private String name;
-
-    public Vehicle(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void applyEffect(RPGCharacter character) {
-        // Implement applyEffect logic for vehicle
-        System.out.println("Applying " + name + " to " + character.getClass().getSimpleName());
-    }
-}
-
-class DopeDrink implements Accessory {
-    private String name;
-
-    public DopeDrink(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void applyEffect(RPGCharacter character) {
-        // Implement applyEffect logic for dope drink
-        System.out.println("Applying " + name + " to " + character.getClass().getSimpleName());
-    }
-}
-
-public class Main{
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         RPGCharacter p = new Police("Officer Smith", 100, 10, 15, 0);
-        RPGCharacter t = new Thief("Sneaky Pete", 80, 15, 20, 0);
-//        System.out.println(p.getHP());
+        RPGCharacter t = new Thief("Sneaky Pete", 80, 15, 20, 10);
+
+        // 1st decision : character
         System.out.println("Choose character: P for Police, T for Thief");
         String choice = scanner.nextLine();
         RPGCharacter selectedCharacter = (choice.equalsIgnoreCase("P")) ? p : t;
@@ -178,28 +34,35 @@ public class Main{
         Accessory vehicle = new Vehicle("Scooter");
         Accessory dopeDrink = new DopeDrink("M150");
 
+        // 2nd decision : accessory
         System.out.println("Choose accessory: W for Weapon, V for Vehicle, D for Dope Drink");
         choice = scanner.nextLine();
-        Accessory selectedAccessory;
-        switch (choice.toUpperCase()) {
-            case "W":
-                selectedAccessory = weapon;
-                break;
-            case "V":
-                selectedAccessory = vehicle;
-                break;
-            case "D":
-                selectedAccessory = dopeDrink;
-                break;
-            default:
-                selectedAccessory = null;
-        }
+        Accessory selectedAccessory = switch (choice.toUpperCase()) {
+            case "W" -> weapon;
+            case "V" -> vehicle;
+            case "D" -> dopeDrink;
+            default -> null;
+        };
 
         if (selectedAccessory != null) {
             selectedAccessory.applyEffect(selectedCharacter);
         }
 
-        System.out.println("To be Continue...... fighter have time to prepare for their fight!");
+        /*
+            next
+            step1 calculate accessory to increase character's stat
+            step2 choose action
+            step3 check who will win (draft 2 : While (HP some = 0 || distance.t = 100 || diff distance = 0 ){
+                                                    calculateDistance();
+                                                    attack();
+                                                    useBuff();
+                                                    attack();   } )
+
+         */
+
+    //After this line is 1st draft version >>> can delete with new code>>>>
+        // \/\/\/\/\/\/\/ //
+//        System.out.println("To be Continue...... fighter have time to prepare for their fight!");
 
 //        int distance = 50;
 //
