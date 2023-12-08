@@ -43,7 +43,7 @@ public class Thief implements RPGCharacter {
         attack += 10;
         System.out.println(name + " uses a buff.");
     }
-
+    //----------------------------------------------
     @Override
     public void calculateDistance() {
         position += speed;

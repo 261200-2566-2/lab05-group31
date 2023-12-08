@@ -48,53 +48,9 @@ public class Main {
             selectedAccessory.applyEffect(selectedCharacter);
         }
 
-        /*
-            next
-            step1 calculate accessory to increase character's stat
-            step2 choose action
-            step3 check who will win (draft 2 : While (HP some = 0 || distance.t = 100 || diff distance = 0 ){
-                                                    calculateDistance();
-                                                    attack();
-                                                    useBuff();
-                                                    attack();   } )
+        System.out.println("***************************");
 
-         */
-
-    //After this line is 1st draft version >>> can delete with new code>>>>
-        // \/\/\/\/\/\/\/ //
-//        System.out.println("To be Continue...... fighter have time to prepare for their fight!");
-
-//        int distance = 50;
-//
-//        while (p.getHP() > 0 && t.getHP() > 0 && distance > 0) {
-//            System.out.println();
-//            System.out.println("Current distance: " + distance);
-//
-//            // Police's turn
-//            p.calculateDistance();
-//            p.attack();
-//            p.useBuff();
-//
-//            // Thief's turn
-//            t.calculateDistance();
-//            t.attack();
-//            t.useBuff();
-//
-////             Update distance based on characters' positions
-//            int diffDistance;
-//            diffDistance = Math.abs(t.getPosition() - p.getPosition());
-//            distance -= diffDistance;
-//
-//            // Display the updated distance
-//            System.out.println("Updated distance: " + distance);
-//        }
-//
-//        // Show the winner
-//        if (p.getHP() == 0 || distance <= 0){
-//            System.out.println("Thief " + t.getName() + " wins!");
-//        } else{
-//            System.out.println("Police " + p.getName() + " wins!");
-//        }
+        System.out.println("You wins!");
 
     }
 

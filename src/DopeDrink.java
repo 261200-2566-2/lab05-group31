@@ -8,7 +8,6 @@ public class DopeDrink implements Accessory {
 
     @Override
     public void applyEffect(RPGCharacter character) {
-        // Implement applyEffect logic for dope drink
         System.out.println("Applying " + name + " to " + character.getClass().getSimpleName());
     }
 }
